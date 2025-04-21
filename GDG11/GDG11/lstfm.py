@@ -10,7 +10,7 @@ response = requests.get(url)
 data = response.json()
 
 if 'toptracks' in data:
-    print(f"\nArtist's top tracks {artist}:")
+    print(f"\nArtist's top tracks {artist_name}:")
     for track in data['toptracks']['track'][:10]:
         print(f"- {track['name']}")
 else:
