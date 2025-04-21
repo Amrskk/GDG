@@ -6,10 +6,12 @@ url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}&
 
 response = requests.get(url)
 data = response.json()
-if data.get('cod') == 200:
+
+if str(data.get('cod')) == "200":
     temp = data['main']['temp']
     description = data['weather'][0]['description']
-    print(f"\nTemperature in the city {city}: {temp}°C")
-    print(f"Weather: {description}")
+    print(f"\nWeather in {city}:")
+    print(f"Temperature: {temp}°C")
+    print(f"Condition: {description.capitalize()}")
 else:
-    print("Write the existing city bruh")
+    print(f"\nError: {data.get('message', 'write the existing city bruh')}")
